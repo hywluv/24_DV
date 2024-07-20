@@ -33,7 +33,7 @@ def parse_filename(filename):
 
 def process_csv_data(file_path):
     df = pd.read_csv(file_path)
-    df['Difference'] = df['InferenceResult'] - df['GroundTruth']
+    df['Difference'] = abs(df['InferenceResult'] - df['GroundTruth'])
     
     # 计算差值的平均值和方差
     mean_difference = df['Difference'].mean()
@@ -50,7 +50,7 @@ def process_csv_data(file_path):
 # BarCharType ModelName SamplingTarget SamplingMethod DownsamplingLevel
 def process_csv_files():
     data = []
-    # 获取当前文件的绝对路径
+    # 获取当前文件的绝对路径07002586930.9*36.+9*63.36.2
     current_file_path = os.path.abspath(__file__)
     # 获取当前文件所在的目录
     current_file_dir = os.path.dirname(current_file_path)
@@ -79,4 +79,7 @@ def process_csv_files():
     
 if __name__ == '__main__':
     df = process_csv_files()
-    df.to_csv('modified.csv', index=False)
+    file_path = os.path.abspath(__file__)
+    dir = os.path.dirname(file_path)
+    file = os.path.join(dir, 'processed.csv')
+    df.to_csv(file, index=False)
