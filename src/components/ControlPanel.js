@@ -3,6 +3,7 @@ import {Select} from 'antd';
 
 import {store} from '../store';
 import '../css/ControlPanel.css'
+import OverviewSelector from "./Overview/Overview_selection";
 
 function ControlPanel() {
     const {state, dispatch} = useContext(store);
@@ -20,7 +21,8 @@ function ControlPanel() {
         <p>Control Panel</p>
         <p>{state.count}</p>
         <button onClick={() => dispatch({type: 'increment'})}>add</button>
-        <p></p>
+        <p>Current Selection:{state.OverviewSelection}</p>
+        <OverviewSelector />
         <Select onChange={onChange} defaultValue='default'>
             <Select.Option value='default'>Default</Select.Option>
             <Select.Option value='A'>Dataset A</Select.Option>

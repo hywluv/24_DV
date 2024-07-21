@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import ReactEcharts from 'echarts-for-react';
 
 import { store } from '../store';
+import TotalFromCSV from './Overview/Total';
 
 function Overview() {
     const {state, dispatch} = useContext(store);
@@ -28,7 +29,8 @@ function Overview() {
 
     return <div>
         <p>Overview</p>
-        <ReactEcharts option={getOption()} />
+        {/*<ReactEcharts option={getOption()} />*/}
+        <TotalFromCSV csvFile="/data/avg.csv" />
     </div>
 }
 

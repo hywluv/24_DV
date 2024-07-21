@@ -4,7 +4,8 @@
 const initialState = {
     count: 0,
     data: null,
-    exampleOption: 'default'
+    exampleOption: 'default',
+    OverviewSelection: 'Average MeanDiff'
 };
 
 export default initialState;

@@ -27,6 +27,11 @@ const reducer = (state, action) => {
                 data: newData
             };
         }
+        case 'OverviewSelection':
+            return {
+                ...state,
+                OverviewSelection: action.payload
+            };
         default:
             throw new Error();
     }
