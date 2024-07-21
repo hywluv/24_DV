@@ -36,6 +36,8 @@ def process_csv_data(file_path):
     df['Difference'] = abs(df['InferenceResult'] - df['GroundTruth'])
     
     # 计算差值的平均值和方差
+    max_diff = df['Difference'].max()
+    min_diff = df['Difference'].min()
     mean_difference = df['Difference'].mean()
     variance_difference = df['Difference'].var()
     
@@ -44,13 +46,15 @@ def process_csv_data(file_path):
     return {
         'MeanDiff': mean_difference,
         'VarianceDiff': variance_difference,
-        'TotalRows': total_rows
+        'TotalRows': total_rows,
+        'MaxDiff': max_diff,
+        'MinDiff': min_diff
     }
 
 # BarCharType ModelName SamplingTarget SamplingMethod DownsamplingLevel
 def process_csv_files():
     data = []
-    # 获取当前文件的绝对路径07002586930.9*36.+9*63.36.2
+    # 获取当前文件的绝对路径
     current_file_path = os.path.abspath(__file__)
     # 获取当前文件所在的目录
     current_file_dir = os.path.dirname(current_file_path)
@@ -71,11 +75,32 @@ def process_csv_files():
                 'SamplingMethod': parsed['SamplingMethod'],
                 'DownsamplingLevel': parsed['DownsamplingLevel'],
                 'RunIndex': parsed['RunIndex'],
+                'TotalRows': processed['TotalRows'],
                 'MeanDiff': processed['MeanDiff'],
                 'VarianceDiff': processed['VarianceDiff'],
-                'TotalRows': processed['TotalRows']
+                "MaxDiff": processed['MaxDiff'],
+                "MinDiff": processed['MinDiff']
             })
     return pd.DataFrame(data)
+
+def run_avg(df):
+    # 根据指定的列进行分组，排除 'RunIndex' 和 'TotalRows' 列
+    group_columns = ['BarChartType', 'ModelName', 'SamplingTarget', 'SamplingMethod', 'DownsamplingLevel']
+    grouped = df.groupby(group_columns)
+    # 计算每个分组的 MeanDiff 和 VarianceDiff 的平均值，MaxDiff 的最大值，MinDiff 的最小值
+    results = grouped.agg({
+        'MeanDiff': 'mean',
+        'VarianceDiff': 'mean',
+        'MaxDiff': 'max',
+        'MinDiff': 'min'
+    }).reset_index()
+    # 重命名列以更清楚地反映计算的是平均值
+    results.rename(columns={
+        'MeanDiff': 'Average MeanDiff',
+        'VarianceDiff': 'Average VarianceDiff'
+    }, inplace=True)
+    # 返回结果 DataFrame
+    return results
     
 if __name__ == '__main__':
     df = process_csv_files()
@@ -83,3 +108,4 @@ if __name__ == '__main__':
     dir = os.path.dirname(file_path)
     file = os.path.join(dir, 'processed.csv')
     df.to_csv(file, index=False)
+    run_avg(df).to_csv(os.path.join(dir, 'avg.csv'), index=False)
