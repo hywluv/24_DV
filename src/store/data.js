@@ -5,7 +5,7 @@ const initialState = {
     count: 0,
     data: null,
     exampleOption: 'default',
-    OverviewSelection: 'Average MeanDiff'
+    OverviewSelection: 'max'
 };
 
 export default initialState;

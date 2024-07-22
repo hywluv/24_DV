@@ -7,20 +7,23 @@ import ControlPanel from './ControlPanel';
 import Overview from './Overview';
 import DetailView from './DetailView';
 import '../css/App.css'
+import {LabelProvider} from './Overview/ChartContext';
 
 // App组件
 function App() {
 
     return <div className='root'>
         <div className='controlPanel'>
-          <ControlPanel/>
+            <ControlPanel/>
         </div>
         <div className='mainPanel'>
-          <div className='overview'><Overview/></div>
-          <div className='otherview'>
-            <div className='assistView'><AssistView/></div>
-            <div className='detailView'><DetailView/></div>
-          </div>
+            <LabelProvider>
+                <div className='overview'><Overview/></div>
+                <div className='otherview'>
+                    <div className='assistView'><AssistView/></div>
+                    <div className='detailView'><DetailView/></div>
+                </div>
+            </LabelProvider>
         </div>
     </div>;
 }
