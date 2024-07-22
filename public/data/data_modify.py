@@ -101,9 +101,19 @@ def run_avg(df):
     }, inplace=True)
     # 返回结果 DataFrame
     return results
-    
+
+
+def sort_csv_data(df):
+    # 将 CSV 数据转换为 DataFrame
+
+    # 按指定的列顺序排序
+    sorted_df = df.sort_values(
+        by=['BarChartType', 'ModelName', 'SamplingTarget', 'SamplingMethod', 'DownsamplingLevel'])
+
+    return sorted_df
+
 if __name__ == '__main__':
-    df = process_csv_files()
+    df = sort_csv_data(process_csv_files())
     file_path = os.path.abspath(__file__)
     dir = os.path.dirname(file_path)
     file = os.path.join(dir, 'processed.csv')
