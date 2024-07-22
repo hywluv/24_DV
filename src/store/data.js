@@ -5,7 +5,7 @@ const initialState = {
     data: null,
     exampleOption: 'default',
     SelectorSelection: 'OverviewSelection',
-    OverviewSelection: 'Average MeanDiff',
+    OverviewSelection: 'default',
     ModelSelection: 'Average MeanDiff'
 };
 
