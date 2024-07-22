@@ -3,7 +3,7 @@ import {Select} from 'antd';
 
 import {store} from '../store';
 import '../css/ControlPanel.css'
-import OverviewSelector from "./Overview/Overview_selection";
+import OverviewSelector from "./Overview/OverviewSelection";
 
 function ControlPanel() {
     const {state, dispatch} = useContext(store);

@@ -12,7 +12,7 @@
   height: 100%;
 }
 .overview{
-  height: 50%;
+  height: 70%;
 }
 .otherview{
   height: 50%;
@@ -22,5 +22,5 @@
   width: 50%;
 }
 .assistView{
-  width: 50%;
+  width: 30%;
 }

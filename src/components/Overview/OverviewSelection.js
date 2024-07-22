@@ -23,7 +23,7 @@ const OverviewSelector = () => {
             defaultValue={"Average MeanDiff"}  // Set default value
             style={{ width: 200 }}  // Optionally specify width
         >
-            <Select.Option value="Average Meandiff">Mean</Select.Option>
+            <Select.Option value="Average MeanDiff">Mean</Select.Option>
             <Select.Option value="Average VarianceDiff">Variance</Select.Option>
             <Select.Option value="MaxDiff">Max</Select.Option>
             <Select.Option value="MinDiff">Min</Select.Option>
