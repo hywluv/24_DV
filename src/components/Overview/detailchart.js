@@ -223,6 +223,10 @@
                                     }
                                 },
                                 tooltip: {},
+                                legend: {
+                                    data: radarData,
+                                    top: "bottom"
+                                },
                                 radar: {
                                     indicator: indicators,
                                     name: {
@@ -236,7 +240,7 @@
                                         lineStyle: {
                                             color: '#af7ac5' // 网格线颜色
                                         }
-                                    }
+                                    },
                                 },
                                 series: [{
                                     name: metric,
