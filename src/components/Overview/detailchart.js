@@ -203,7 +203,7 @@
                     header: true,
                     complete: function (results) {
                         const filteredData = results.data.filter(item => {
-                            const labelString = `1 - ${item["ModelName"]},${item["SamplingTarget"]},${item["SamplingMethod"]},${item["DownsamplingLevel"]}`;
+                            const labelString = `${item["ModelName"]},${item["SamplingTarget"]},${item["SamplingMethod"]},${item["DownsamplingLevel"]}`;
                             return labelString === selectedLabel;
                         });
                         const metrics = ['MeanDiff', 'MaxDiff', 'MinDiff', 'VarianceDiff'];

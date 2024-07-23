@@ -66,7 +66,7 @@ const TotalFromCSV = ({ csvFile }) => {
 
                 // Apply sorting
                 const data = Object.keys(groupedData).map(key => ({
-                    label: groupedData[key].label + ' - ' + key,
+                    label: key,
                     mean: groupedData[key].meanSum / groupedData[key].count,
                     variance: groupedData[key].varianceSum / groupedData[key].count,
                     max: groupedData[key].maxSum / groupedData[key].count,
