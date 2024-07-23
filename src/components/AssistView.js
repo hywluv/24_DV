@@ -22,7 +22,7 @@ class AssistView extends React.Component {
          * 前者会在渲染时就调用函数，后者会在点击时调用，请仔细体会两者区别！！！
          */
 //        return <div>
-//            <p>Assist View</p>
+//            <p>AssistView View</p>
 //            <p>{state.count}</p>
 //            <button onClick={() => dispatch({ type: 'increment' })}>add</button>
 //        </div>
