@@ -31,7 +31,7 @@ function Overview() {
     };
 
     return <div>
-        <p>Overview</p>
+        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#666666', fontFamily: 'Times New Roman', textAlign: 'left', marginLeft:8}}>Overview</p>
         {/*<ReactEcharts option={getOption()} />*/}
         {/*<TotalFromCSV csvFile="/data/processed.csv" />*/}
         <TotalFromCSV csvFile="/data/processed.csv" />
