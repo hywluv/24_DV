@@ -6,7 +6,19 @@ const initialState = {
     exampleOption: 'default',
     SelectorSelection: 'OverviewSelection',
     OverviewSelection: 'default',
-    ModelSelection: 'Average MeanDiff'
+    ModelSelection: 'Average MeanDiff',
+    filters1: {
+        ModelName: 'N/A',
+        SamplingTarget: 'N/A',
+        SamplingMethod: 'N/A',
+        DownsamplingLevel: 'N/A'
+    },
+    filters2: {
+        ModelName: 'N/A',
+        SamplingTarget: 'N/A',
+        SamplingMethod: 'N/A',
+        DownsamplingLevel: 'N/A'
+    }
 };
 
 export default initialState;

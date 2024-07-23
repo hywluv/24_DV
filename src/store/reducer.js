@@ -27,6 +27,22 @@ const reducer = (state, action) => {
                 data: newData
             };
         }
+        case 'UPDATE_CONDITION_1':
+            return {
+                ...state,
+                filters1: {
+                    ...state.filters1,
+                    [action.payload.key]: action.payload.value
+                }
+            };
+        case 'UPDATE_CONDITION_2':
+            return {
+                ...state,
+                filters2: {
+                    ...state.filters2,
+                    [action.payload.key]: action.payload.value
+                }
+            };
         case 'OverviewSelection':
             return {
                 ...state,
