@@ -186,13 +186,7 @@ function ControlPanel() {
                 </div>
                 <br/>
 
-                <p style={{
-                    fontFamily: 'Georgia',
-                    fontSize: 20,
-                    color: '#0f0f0f',
-                    textAlign: 'center',
-                    marginRight: 18
-                }}>Compare Model2 Filter</p>
+                <p className='label'>Compare Model2 Filter</p>
                 <div style={{
                     width: 200,
                     fontFamily: 'Trebuchet MS',

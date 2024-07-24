@@ -27,21 +27,40 @@ function QuestionAnswer() {
 
     return (
         <div>
-            <p>Ask a Question</p>
-            <form onSubmit={handleSubmit}>
+            <p style={{color: '#0f0f0f'}}>Ask a Question</p>
+            <form style={{marginTop: -10}} onSubmit={handleSubmit}>
                 <textarea
                     value={question}
                     onChange={handleQuestionChange}
                     rows="4"
-                    cols="50"
+                    cols="45"
+                    style={{fontFamily: 'Comic Sans MS, sans-serif',
+                        fontSize: '14px',
+                        color: '#333',
+                        backgroundColor: '#f9f9f9',
+                        border: '1px solid #ccc',
+                        padding: '5px',
+                        borderRadius: '5px',
+                        lineHeight: '1',
+                        resize: 'both'}}
                     placeholder="Enter your question here..."
                 />
-                <button type="submit" disabled={loading}>
+                <button type="submit" disabled={loading}
+                style={{
+                    width: '80px',
+                    height: '30px',
+                    fontSize: '15px',
+                    cursor: 'pointer',
+                    backgroundColor: '#ffffff',
+                    border: 'outset',
+                    fontFamily: "Comic Sans MS",
+                    marginLeft: 10,
+                }}>
                     {loading ? 'Loading...' : 'Ask'}
                 </button>
             </form>
-            <p>Answer:</p>
-            <div>
+            <p style={{color: '#0f0f0f', marginTop: 15}}>Answer:</p>
+            <div style={{fontFamily: 'Comic Sans MS', fontSize: 15, color: '#666', marginTop: -10}}> 
                 {/* 使用 ReactMarkdown 渲染 Markdown 内容 */}
                 <ReactMarkdown children={answer} remarkPlugins={[remarkGfm]} />
             </div>

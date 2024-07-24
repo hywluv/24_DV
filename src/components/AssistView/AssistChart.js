@@ -147,7 +147,7 @@ function AssistView({ csvFile }) {
 
     return (
         <div className='assistchart-container'>
-            <ReactECharts option={options} style={{ height: 600, width: '100%' }} />
+            <ReactECharts option={options} style={{ height: 400, width: '100%' }} />
         </div>
     );
 }

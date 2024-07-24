@@ -19,7 +19,6 @@ function App() {
         <div className='mainPanel'>
             <LabelProvider>
                 <div className='overview'><Overview/></div>
-                <br/>
                 <div className='otherview'>
                     <div style={{fontSize: '25px', fontWeight: 'bold', color: '#666666', fontFamily: 'Times New Roman', textAlign: 'left', marginLeft:20}} className='assistView'><AssistView/></div>
                     <div className='detailView'><DetailView/></div>

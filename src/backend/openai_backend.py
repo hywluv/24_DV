@@ -23,7 +23,7 @@ def ask():
         return resp
 
     data = request.json
-    df = pd.read_csv('/Users/hyw/Hyw_doc/Code/ZJUCS-24Spring/24DV/Proj2/public/data/avg.csv')
+    df = pd.read_csv('D:\\coding\\24_DV\\24_DV\\public\\data\\avg.csv')
     data_prompts = df.to_string(index=False)
     print(data_prompts)
     prompt = data['prompt']
