@@ -7,9 +7,9 @@
 .controlPanel{
   display: flex;
   width: 17%;
-  min-height: 200vh;
+  min-height: 190vh;
   background: radial-gradient(circle,#ecbaba,#8bcef8); 
-  padding: 20px;
+  padding: 40px;
   border: 5px solid;
   border-image: linear-gradient(to right, #ff7f50, #87cefa) 1;
 }
