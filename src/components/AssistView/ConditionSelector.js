@@ -25,12 +25,12 @@ const onChange = (value) => {
 
     return (
         <div className='select-container'>
-        <Select defaultValue={selectedValue || options[0].value} style={{ display: flex }} onChange={onChange}>
+        <Select defaultValue={selectedValue || options[0].value} style={{ display: 'flex' }} onChange={onChange}>
             {options.map(option => (
                 <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
             ))}
         </Select>
-        <div>
+        </div>
     );
 }
 
