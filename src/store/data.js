@@ -18,6 +18,12 @@ const initialState = {
         SamplingTarget: 'N/A',
         SamplingMethod: 'N/A',
         DownsamplingLevel: 'N/A'
+    },
+    overview: {
+        ModelName: 'N/A',
+        SamplingTarget: 'N/A',
+        SamplingMethod: 'N/A',
+        DownsamplingLevel: 'N/A'
     }
 };
 

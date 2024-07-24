@@ -6,13 +6,22 @@ function ConditionSelector({ selectorKey, options, filterGroup }) {
     const { state, dispatch } = useContext(store);
     const selectedValue = state[filterGroup][selectorKey];
 
-    const onChange = (value) => {
-        console.log(`${selectorKey} changed to ${value} in ${filterGroup}`);
-        dispatch({
-            type: `UPDATE_CONDITION_${filterGroup === 'filters1' ? '1' : '2'}`,
-            payload: { key: selectorKey, value }
-        });
-    };
+const onChange = (value) => {
+    console.log(`${selectorKey} changed to ${value} in ${filterGroup}`);
+    let actionType;
+    if (filterGroup === 'filters1') {
+        actionType = 'UPDATE_CONDITION_1';
+    } else if (filterGroup === 'filters2') {
+        actionType = 'UPDATE_CONDITION_2';
+    } else if (filterGroup === 'overview') {
+        actionType = 'UPDATE_CONDITION_OVERVIEW';
+    }
+
+    dispatch({
+        type: actionType,
+        payload: { key: selectorKey, value }
+    });
+};
 
     return (
         <Select defaultValue={selectedValue || options[0].value} style={{ width: 150 ,fontFamily: "Trebuchet MS"}} onChange={onChange}>

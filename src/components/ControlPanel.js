@@ -14,130 +14,286 @@ function ControlPanel() {
     const showModelSelector = () => setView('ModelSelection')
 
 
-   return (
-    <div className="control-panel">
-        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#ffffff', fontFamily: 'Times New Roman', textAlign: 'center', marginBottom: 50,marginTop: 50}}>Control Panel</p>
-        <div style={{marginLeft: 20, marginBottom: 50}}>
-            <OverviewSelection/>
-        </div>
-        <div>
-            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#0f0f0f', textAlign: 'center', marginRight: 18}}>Filter Group 1</p>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Model Name:
-                <ConditionSelector
-                    selectorKey="ModelName"
-                    options={[
-                        {label: 'ResNet50', value: 'ResNet50'},
-                        {label: 'VGG19', value: 'VGG19'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters1"
-                />
+    return (
+        <div className="control-panel">
+            <p style={{
+                fontSize: '25px',
+                fontWeight: 'bold',
+                color: '#ffffff',
+                fontFamily: 'Times New Roman',
+                textAlign: 'center',
+                marginBottom: 50,
+                marginTop: 50
+            }}>Control Panel</p>
+            <div style={{marginLeft: 20, marginBottom: 50}}>
+                <OverviewSelection/>
             </div>
-            <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Sampling Target:
-                <ConditionSelector
-                    selectorKey="SamplingTarget"
-                    options={[
-                        {label: 'Ratio', value: 'Ratio'},
-                        {label: 'Height', value: 'Height'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters1"
-                />
+            <div>
+                <p style={{
+                    fontFamily: 'Georgia',
+                    fontSize: 20,
+                    color: '#0f0f0f',
+                    textAlign: 'center',
+                    marginRight: 18
+                }}>Overview Model Filter</p>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Model Name:
+                    <ConditionSelector
+                        selectorKey="ModelName"
+                        options={[
+                            {label: 'ResNet50', value: 'ResNet50'},
+                            {label: 'VGG19', value: 'VGG19'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="overview"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Sampling Target:
+                    <ConditionSelector
+                        selectorKey="SamplingTarget"
+                        options={[
+                            {label: 'Ratio', value: 'Ratio'},
+                            {label: 'Height', value: 'Height'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="overview"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Sampling Method:
+                    <ConditionSelector
+                        selectorKey="SamplingMethod"
+                        options={[
+                            {label: 'ADV', value: 'ADV'},
+                            {label: 'COV', value: 'COV'},
+                            {label: 'IID', value: 'IID'},
+                            {label: 'OOD', value: 'OOD'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="overview"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Downsampling Level:
+                    <ConditionSelector
+                        selectorKey="DownsamplingLevel"
+                        options={[
+                            {label: '2', value: '2'},
+                            {label: '4', value: '4'},
+                            {label: '8', value: '8'},
+                            {label: '16', value: '16'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="overview"
+                    />
+                </div>
             </div>
-            <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Sampling Method:
-                <ConditionSelector
-                    selectorKey="SamplingMethod"
-                    options={[
-                        {label: 'ADV', value: 'ADV'},
-                        {label: 'COV', value: 'COV'},
-                        {label: 'IID', value: 'IID'},
-                        {label: 'OOD', value: 'OOD'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters1"
-                />
-            </div>
-            <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Downsampling Level:
-                <ConditionSelector
-                    selectorKey="DownsamplingLevel"
-                    options={[
-                        {label: '2', value: '2'},
-                        {label: '4', value: '4'},
-                        {label: '8', value: '8'},
-                        {label: '16', value: '16'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters1"
-                />
-            </div>
-            <br/>
+            <div>
+                <p style={{
+                    fontFamily: 'Georgia',
+                    fontSize: 20,
+                    color: '#0f0f0f',
+                    textAlign: 'center',
+                    marginRight: 18
+                }}>Compare Model1 Filter</p>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Model Name:
+                    <ConditionSelector
+                        selectorKey="ModelName"
+                        options={[
+                            {label: 'ResNet50', value: 'ResNet50'},
+                            {label: 'VGG19', value: 'VGG19'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters1"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Sampling Target:
+                    <ConditionSelector
+                        selectorKey="SamplingTarget"
+                        options={[
+                            {label: 'Ratio', value: 'Ratio'},
+                            {label: 'Height', value: 'Height'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters1"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Sampling Method:
+                    <ConditionSelector
+                        selectorKey="SamplingMethod"
+                        options={[
+                            {label: 'ADV', value: 'ADV'},
+                            {label: 'COV', value: 'COV'},
+                            {label: 'IID', value: 'IID'},
+                            {label: 'OOD', value: 'OOD'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters1"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Downsampling Level:
+                    <ConditionSelector
+                        selectorKey="DownsamplingLevel"
+                        options={[
+                            {label: '2', value: '2'},
+                            {label: '4', value: '4'},
+                            {label: '8', value: '8'},
+                            {label: '16', value: '16'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters1"
+                    />
+                </div>
+                <br/>
 
-            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#0f0f0f', textAlign:'center', marginRight: 18}}>Filter Group 2</p>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Model Name:
-                <ConditionSelector
-                    selectorKey="ModelName"
-                    options={[
-                        {label: 'ResNet50', value: 'ResNet50'},
-                        {label: 'VGG19', value: 'VGG19'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters2"
-                />
-            </div>
-            <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Sampling Target:
-                <ConditionSelector
-                    selectorKey="SamplingTarget"
-                    options={[
-                        {label: 'Ratio', value: 'Ratio'},
-                        {label: 'Height', value: 'Height'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters2"
-                />
-            </div>
-            <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Sampling Method:
-                <ConditionSelector
-                    selectorKey="SamplingMethod"
-                    options={[
-                        {label: 'ADV', value: 'ADV'},
-                        {label: 'COV', value: 'COV'},
-                        {label: 'IID', value: 'IID'},
-                        {label: 'OOD', value: 'OOD'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters2"
-                />
-            </div>
-            <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
-                Downsampling Level:
-                <ConditionSelector
-                    selectorKey="DownsamplingLevel"
-                    options={[
-                        {label: '2', value: '2'},
-                        {label: '4', value: '4'},
-                        {label: '8', value: '8'},
-                        {label: '16', value: '16'},
-                        {label: 'N/A', value: 'N/A'}  // Added N/A option
-                    ]}
-                    filterGroup="filters2"
-                />
+                <p style={{
+                    fontFamily: 'Georgia',
+                    fontSize: 20,
+                    color: '#0f0f0f',
+                    textAlign: 'center',
+                    marginRight: 18
+                }}>Compare Model2 Filter</p>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Model Name:
+                    <ConditionSelector
+                        selectorKey="ModelName"
+                        options={[
+                            {label: 'ResNet50', value: 'ResNet50'},
+                            {label: 'VGG19', value: 'VGG19'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters2"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Sampling Target:
+                    <ConditionSelector
+                        selectorKey="SamplingTarget"
+                        options={[
+                            {label: 'Ratio', value: 'Ratio'},
+                            {label: 'Height', value: 'Height'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters2"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Sampling Method:
+                    <ConditionSelector
+                        selectorKey="SamplingMethod"
+                        options={[
+                            {label: 'ADV', value: 'ADV'},
+                            {label: 'COV', value: 'COV'},
+                            {label: 'IID', value: 'IID'},
+                            {label: 'OOD', value: 'OOD'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters2"
+                    />
+                </div>
+                <br/>
+                <div style={{
+                    width: 200,
+                    fontFamily: 'Trebuchet MS',
+                    textAlign: 'left',
+                    marginLeft: 35,
+                    color: '#ffffff'
+                }}>
+                    Downsampling Level:
+                    <ConditionSelector
+                        selectorKey="DownsamplingLevel"
+                        options={[
+                            {label: '2', value: '2'},
+                            {label: '4', value: '4'},
+                            {label: '8', value: '8'},
+                            {label: '16', value: '16'},
+                            {label: 'N/A', value: 'N/A'}  // Added N/A option
+                        ]}
+                        filterGroup="filters2"
+                    />
+                </div>
             </div>
         </div>
-    </div>
-   );
+    );
 }
 
 function OverviewSelection() {

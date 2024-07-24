@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import ReactECharts from 'echarts-for-react';
 import Papa from 'papaparse';
-import { store } from '../../store';
-import { useLabel } from './ChartContext'; // 导入自定义的useLabel hook
+import {store} from '../../store';
+import {useLabel} from './ChartContext'; // 导入自定义的useLabel hook
 
 
 const colorMapping = {
@@ -19,11 +19,19 @@ const colorMapping = {
   'OOD': [0,10,0,10],
 }*/
 
-const TotalFromCSV = ({ csvFile }) => {
+function filterData(data, filters) {
+    return data.filter(item => {
+        return Object.keys(filters).every(key => {
+            return filters[key] === 'N/A' || item[key] === filters[key];
+        });
+    });
+}
+
+const TotalFromCSV = ({csvFile}) => {
     const [options, setOptions] = useState({});
     const [sortOrder, setSortOrder] = useState('none');  // 控制排序的状态
-    const { state, dispatch } = useContext(store);
-    const { selectedLabel, setSelectedLabel } = useLabel(); // 使用上下文中的selectedLabel和setSelectedLabel
+    const {state, dispatch} = useContext(store);
+    const {selectedLabel, setSelectedLabel} = useLabel(); // 使用上下文中的selectedLabel和setSelectedLabel
 
     const handleMouseOver = (params) => {
         // 确保在悬停时获取正确的数据点名称
@@ -36,12 +44,14 @@ const TotalFromCSV = ({ csvFile }) => {
     };
 
     useEffect(() => {
+        console.log(state.overview); // 查看当前筛选条件
         Papa.parse(csvFile, {
             download: true,
             header: true,
             complete: (results) => {
+                const filteredData = filterData(results.data, state.overview);
                 const groupedData = {};
-                results.data.forEach(item => {
+                filteredData.forEach(item => {
                     const groupKey = `${item["ModelName"]},${item["SamplingTarget"]},${item["SamplingMethod"]},${item["DownsamplingLevel"]}`;
                     const meanValue = parseFloat(item["MeanDiff"]);
                     const varianceValue = parseFloat(item["VarianceDiff"]);
@@ -85,19 +95,24 @@ const TotalFromCSV = ({ csvFile }) => {
                 // setChartKey(prevKey => prevKey + 1); // Force re-render
             }
         });
-    }, [csvFile, state.OverviewSelection, sortOrder]); // Include sortOrder in the dependencies
+    }, [csvFile, state.OverviewSelection, state.overview, sortOrder]); // Include sortOrder in the dependencies
 
     function buildOptions(data) {
-        let yAxisConfig = [{ type: 'value', name: state.OverviewSelection, axisLabel:{fontFamily: 'Comic Sans MS', fontSize: 12, color:'#000'}, nameTextStyle:{fontSize: 14, color: '#333', fontFamily: 'Menlo'}}];
+        let yAxisConfig = [{
+            type: 'value',
+            name: state.OverviewSelection,
+            axisLabel: {fontFamily: 'Comic Sans MS', fontSize: 12, color: '#000'},
+            nameTextStyle: {fontSize: 14, color: '#333', fontFamily: 'Menlo'}
+        }];
         let seriesConfig = [{
             name: state.OverviewSelection,
             type: 'bar',
-            barWidth: '60%',showBackground: true,
+            barWidth: '60%', showBackground: true,
             backgroundStyle: {
                 color: 'rgba(220, 220, 220, 0.3)'
             },
-            itemStyle:{
-                borderRadius: [10,10,0,0],
+            itemStyle: {
+                borderRadius: [10, 10, 0, 0],
                 shadowColor: 'rgba(0, 0, 0, 0.4)',
                 shadowBlur: 10,
             },
@@ -106,12 +121,15 @@ const TotalFromCSV = ({ csvFile }) => {
             data: data.map((item) => ({
                 value: item[state.OverviewSelection.toLowerCase()],
                 itemStyle: {
-                    color:{
+                    color: {
                         type: 'linear',
-                        x: 0,y: 0,
-                        x2: 0,y2: 1,
+                        x: 0, y: 0,
+                        x2: 0, y2: 1,
                         colorStops: [
-                            {offset: 0, color: colorMapping[item.label.split(',')[3]].split('linear-gradient(45deg, ')[1].split(', ')[0]},
+                            {
+                                offset: 0,
+                                color: colorMapping[item.label.split(',')[3]].split('linear-gradient(45deg, ')[1].split(', ')[0]
+                            },
                             {offset: 1, color: colorMapping[item.label.split(',')[3]].split(', ')[1].split(')')[0]},
                         ],
                     },
@@ -121,45 +139,64 @@ const TotalFromCSV = ({ csvFile }) => {
 
         if (state.OverviewSelection === 'default') {
             yAxisConfig = [
-                { type: 'value', name: 'Mean', nameTextStyle:{fontSize: 14, color: '#333', fontFamily: 'Menlo'}, axisLabel:{fontFamily: 'Comic Sans MS', fontSize: 12, color:'#000'}},
-                { type: 'value', name: 'Variance', nameTextStyle:{fontSize: 14, color: '#333', fontFamily: 'Menlo'}, position: 'right', axisLabel:{fontFamily: 'Comic Sans MS', fontSize: 12, color:'#000'}   }
+                {
+                    type: 'value',
+                    name: 'Mean',
+                    nameTextStyle: {fontSize: 14, color: '#333', fontFamily: 'Menlo'},
+                    axisLabel: {fontFamily: 'Comic Sans MS', fontSize: 12, color: '#000'}
+                },
+                {
+                    type: 'value',
+                    name: 'Variance',
+                    nameTextStyle: {fontSize: 14, color: '#333', fontFamily: 'Menlo'},
+                    position: 'right',
+                    axisLabel: {fontFamily: 'Comic Sans MS', fontSize: 12, color: '#000'}
+                }
             ];
             seriesConfig = [
-                {   name: 'Mean', type: 'bar', 
-                    barWidth: '60%',showBackground: true,
+                {
+                    name: 'Mean', type: 'bar',
+                    barWidth: '60%', showBackground: true,
                     backgroundStyle: {
-                      color: 'rgba(220, 220, 220, 0.3)'
+                        color: 'rgba(220, 220, 220, 0.3)'
                     },
-                    itemStyle:{
-                        borderRadius: [10,10,0,0],
+                    itemStyle: {
+                        borderRadius: [10, 10, 0, 0],
                         shadowColor: 'rgba(0, 0, 0, 0.4)',
                         shadowBlur: 10,
-                      },
-                    
+                    },
+
                     animationDuration: 0, // 设置动画持续时间
                     animationEasing: 'elasticOut', // 设置动画缓动效果
-                    
+
                     data: data.map((item) => ({
-                    value: item.mean,
+                        value: item.mean,
                         itemStyle: {
-                        // borderRadius: shapeMapping[item.label.split(',')[2]],
-                            color:{
+                            // borderRadius: shapeMapping[item.label.split(',')[2]],
+                            color: {
                                 type: 'linear',
-                                x: 0,y: 0,
-                                x2: 0,y2: 1,
+                                x: 0, y: 0,
+                                x2: 0, y2: 1,
                                 colorStops: [
-                                    {offset: 0, color: colorMapping[item.label.split(',')[3]].split('linear-gradient(45deg, ')[1].split(', ')[0]},
-                                    {offset: 1, color: colorMapping[item.label.split(',')[3]].split(', ')[1].split(')')[0]},
+                                    {
+                                        offset: 0,
+                                        color: colorMapping[item.label.split(',')[3]].split('linear-gradient(45deg, ')[1].split(', ')[0]
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: colorMapping[item.label.split(',')[3]].split(', ')[1].split(')')[0]
+                                    },
                                 ],
                             },
-                        
+
                         },
                     })),
                 },
-                {   name: 'Variance', type: 'line', 
+                {
+                    name: 'Variance', type: 'line',
                     animationDuration: 10, // 设置动画持续时间
                     animationEasing: 'elasticOut', // 设置动画缓动效果
-                    yAxisIndex: 1, data: data.map(item => item.variance) 
+                    yAxisIndex: 1, data: data.map(item => item.variance)
                 }
             ];
         }
@@ -169,15 +206,15 @@ const TotalFromCSV = ({ csvFile }) => {
                 text: '按模型和采样特征概览',
                 left: 'center',
                 textStyle: {
-                  fontSize: 26,
-                  fontFamily: 'STZhongsong',
-                  fontWeight: 'bolder',
-                  color:'#000080',
-                  textAlign: 'center',
-                  textBorderColor: '#000000',
-                  textBorderWidth: 0,
-                  textShadowColor: 'rgba(0, 0, 0, 1)',
-                  textShadowBlur: 0,
+                    fontSize: 26,
+                    fontFamily: 'STZhongsong',
+                    fontWeight: 'bolder',
+                    color: '#000080',
+                    textAlign: 'center',
+                    textBorderColor: '#000000',
+                    textBorderWidth: 0,
+                    textShadowColor: 'rgba(0, 0, 0, 1)',
+                    textShadowBlur: 0,
                 },
             },
 
@@ -188,15 +225,15 @@ const TotalFromCSV = ({ csvFile }) => {
 
             dataZoom: [
                 {
-                  type: 'inside',
+                    type: 'inside',
                 },
                 {
-                  type: 'slider',
+                    type: 'slider',
                 },
             ],
 
-            tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-            
+            tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
+
             legend: {
                 data: seriesConfig.map(series => series.name),
                 top: 10,
@@ -207,13 +244,13 @@ const TotalFromCSV = ({ csvFile }) => {
                 type: 'category',
                 data: data.map(item => item.label),
                 axisLabel: {
-                  margin:10,
-                  show: true,
-                  interval: 0,
-                  rotate: 45,
-                  fontFamily: 'Menlo',
-                  fontSize: 11,
-                  color:'#000',
+                    margin: 10,
+                    show: true,
+                    interval: 0,
+                    rotate: 45,
+                    fontFamily: 'Menlo',
+                    fontSize: 11,
+                    color: '#000',
                 }
             },
             yAxis: yAxisConfig,
@@ -223,11 +260,41 @@ const TotalFromCSV = ({ csvFile }) => {
 
     return (
         <div>
-            <ReactECharts option={options} onEvents={onEvents} style={{ height: 400 }} />
+            <ReactECharts option={options} onEvents={onEvents} style={{height: 400}}/>
             <br></br>
-            <button style={{ width: '100px', height: '27px', fontSize: '15px' , cursor: 'pointer' , backgroundColor: '#ffffff', border: 'outset', fontFamily: "SimHei", marginRight: 8, marginLeft: 50}} onClick={() => setSortOrder('ascending')}>升序排序</button>
-            <button style={{ width: '100px', height: '27px', fontSize: '15px' , cursor: 'pointer' , backgroundColor: '#ffffff', border: 'outset', fontFamily: "SimHei", marginRight: 8}} onClick={() => setSortOrder('descending')}>降序排序</button>
-            <button style={{ width: '120px', height: '27px', fontSize: '15px' , cursor: 'pointer' , backgroundColor: '#ffffff', border: 'outset', fontFamily: "SimHei"}} onClick={() => setSortOrder('none')}>恢复原始顺序</button>
+            <button style={{
+                width: '100px',
+                height: '27px',
+                fontSize: '15px',
+                cursor: 'pointer',
+                backgroundColor: '#ffffff',
+                border: 'outset',
+                fontFamily: "SimHei",
+                marginRight: 8,
+                marginLeft: 50
+            }} onClick={() => setSortOrder('ascending')}>升序排序
+            </button>
+            <button style={{
+                width: '100px',
+                height: '27px',
+                fontSize: '15px',
+                cursor: 'pointer',
+                backgroundColor: '#ffffff',
+                border: 'outset',
+                fontFamily: "SimHei",
+                marginRight: 8
+            }} onClick={() => setSortOrder('descending')}>降序排序
+            </button>
+            <button style={{
+                width: '120px',
+                height: '27px',
+                fontSize: '15px',
+                cursor: 'pointer',
+                backgroundColor: '#ffffff',
+                border: 'outset',
+                fontFamily: "SimHei"
+            }} onClick={() => setSortOrder('none')}>恢复原始顺序
+            </button>
             {/*<div>[TEST]当前选中的标签: {selectedLabel}</div>*/}
         </div>
     );

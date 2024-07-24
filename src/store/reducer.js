@@ -1,4 +1,3 @@
-
 // 不同请求的处理
 const reducer = (state, action) => {
     switch (action.type) {
@@ -40,6 +39,14 @@ const reducer = (state, action) => {
                 ...state,
                 filters2: {
                     ...state.filters2,
+                    [action.payload.key]: action.payload.value
+                }
+            };
+        case 'UPDATE_CONDITION_OVERVIEW':
+            return {
+                ...state,
+                overview: {
+                    ...state.overview,
                     [action.payload.key]: action.payload.value
                 }
             };
