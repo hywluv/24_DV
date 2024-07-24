@@ -5,6 +5,16 @@
     width: 200px;
 }
 
+.main-label {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 0;
+    font-family: bold;
+}
+
+
 .label {
     color: white;
     font-family: "Poppins", sans-serif;
