@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import Papa from 'papaparse';
 import { useLabel } from './ChartContext';
+import '../../index.css'
 
 const prepareChartData = (data, metric) => {
     // 以 RunIndex 分组
@@ -165,28 +166,11 @@ const DetailViewChart = ({csvFile}) => {
 
     return (
         <div>
-            <br/>
-            <div style={{width: '100%'}}>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                    alignItems: 'center',
-                    height: '100%',
-                    width: '80%',
-                    marginLeft: 'auto' // 将这个容器向右对齐
-                }}>
-                    <div style={{
-                        fontFamily: 'FangSong',
-                        fontSize: 22,
-                        fontWeight: 'bold',
-                        textAlign: 'left',
-                        width: '100%' // 确保文字在容器内居中
-                    }}>
-                        当前选中的标签: {selectedLabel}
-                    </div>
-                </div>
+            <div className='detailview-container'>
+                <span className='title'>Detail View</span>
+                <span className='subtitle'>Label Selected: { selectedLabel }</span>
             </div>
-            <br/><br/>
+            <br/>
             <div style={{display: 'flex', flexWrap: "wrap", gap: '20px'}}>
                 {chartOptions.map((options, index) => (
                     <div key={index} style={{width: 'calc(50% - 20px)', height: '400px'}}>
