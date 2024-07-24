@@ -20,7 +20,7 @@ function App() {
             <LabelProvider>
                 <div className='overview'><Overview/></div>
                 <div className='otherview'>
-                    <div className='assistView'><AssistView/></div>
+                    <div style={{fontSize: '25px', fontWeight: 'bold', color: '#666666', fontFamily: 'Times New Roman', textAlign: 'left', marginLeft:8}} className='assistView'><AssistView/></div>
                     <div className='detailView'><DetailView/></div>
                 </div>
             </LabelProvider>

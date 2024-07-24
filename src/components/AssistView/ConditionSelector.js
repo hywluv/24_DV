@@ -15,9 +15,9 @@ function ConditionSelector({ selectorKey, options, filterGroup }) {
     };
 
     return (
-        <Select defaultValue={selectedValue || options[0].value} style={{ width: 120 }} onChange={onChange}>
+        <Select defaultValue={selectedValue || options[0].value} style={{ width: 150 ,fontFamily: "Trebuchet MS"}} onChange={onChange}>
             {options.map(option => (
-                <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
+                <Select.Option style={{fontFamily: "Trebuchet MS"}} key={option.value} value={option.value}>{option.label}</Select.Option>
             ))}
         </Select>
     );
