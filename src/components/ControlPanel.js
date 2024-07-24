@@ -18,7 +18,7 @@ function ControlPanel() {
     return (
         <div className="control-panel">
             <p className='label'>Control Panel</p>
-            <div style={{marginLeft: 20, marginBottom: 50}}>
+            <div style={{marginBottom: 50}}>
                 <OverviewSelection/>
             </div>
             <div>
@@ -27,7 +27,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Model Name:
@@ -46,7 +45,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Sampling Target:
@@ -65,7 +63,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Sampling Method:
@@ -86,7 +83,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Downsampling Level:
@@ -109,7 +105,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Model Name:
@@ -128,7 +123,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Sampling Target:
@@ -147,7 +141,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Sampling Method:
@@ -168,7 +161,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Downsampling Level:
@@ -191,7 +183,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Model Name:
@@ -210,7 +201,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Sampling Target:
@@ -229,7 +219,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Sampling Method:
@@ -250,7 +239,6 @@ function ControlPanel() {
                     width: 200,
                     fontFamily: 'Trebuchet MS',
                     textAlign: 'left',
-                    marginLeft: 35,
                     color: '#ffffff'
                 }}>
                     Downsampling Level:
