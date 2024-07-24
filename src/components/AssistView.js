@@ -6,6 +6,7 @@ import {store} from '../store';
 import AssistChart from "./AssistView/AssistChart";
 import TotalFromCSV from "./Overview/Total";
 import '../index.css';
+import QuestionAnswer from "./question_answer/q_a";
 
 function AssistView() {
     return <div>
@@ -13,6 +14,7 @@ function AssistView() {
             <p className='title'>Assist View</p>
         </div>
         <AssistChart csvFile={"/data/processed.csv"}/>
+        <QuestionAnswer />
     </div>
 }
 
