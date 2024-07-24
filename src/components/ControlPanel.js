@@ -6,6 +6,7 @@ import {store} from '../store';
 import '../css/ControlPanel.css'
 import OverviewSelector from "./Overview/OverviewSelection";
 import {ConditionSelector} from "./AssistView/ConditionSelector";
+import '../index.css';
 
 function ControlPanel() {
     const {state, dispatch} = useContext(store);
@@ -16,26 +17,12 @@ function ControlPanel() {
 
     return (
         <div className="control-panel">
-            <p style={{
-                fontSize: '25px',
-                fontWeight: 'bold',
-                color: '#ffffff',
-                fontFamily: 'Times New Roman',
-                textAlign: 'center',
-                marginBottom: 50,
-                marginTop: 50
-            }}>Control Panel</p>
+            <p className='label'>Control Panel</p>
             <div style={{marginLeft: 20, marginBottom: 50}}>
                 <OverviewSelection/>
             </div>
             <div>
-                <p style={{
-                    fontFamily: 'Georgia',
-                    fontSize: 20,
-                    color: '#0f0f0f',
-                    textAlign: 'center',
-                    marginRight: 18
-                }}>Overview Model Filter</p>
+                <p className='label'>Overview Model Filter</p>
                 <div style={{
                     width: 200,
                     fontFamily: 'Trebuchet MS',
@@ -117,13 +104,7 @@ function ControlPanel() {
                 </div>
             </div>
             <div>
-                <p style={{
-                    fontFamily: 'Georgia',
-                    fontSize: 20,
-                    color: '#0f0f0f',
-                    textAlign: 'center',
-                    marginRight: 18
-                }}>Compare Model1 Filter</p>
+                <p className='label'>Compare Model1 Filter</p>
                 <div style={{
                     width: 200,
                     fontFamily: 'Trebuchet MS',

@@ -6,12 +6,15 @@ import { useLabel } from './Overview/ChartContext';
 import { LabelProvider } from './Overview/ChartContext';
 import TotalFromCSV from './Overview/Total';
 import DetailViewChart from "./Overview/detailchart";
+import '../index.css';
 
 function Overview() {
     const {state, dispatch} = useContext(store);
 
     return <div>
-        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#666666', fontFamily: 'Times New Roman', textAlign: 'left', marginLeft:20}}>Overview</p>
+        <div className='title-container'>
+            <p className='title'>Overview</p>
+        </div>
         {/*<ReactEcharts option={getOption()} />*/}
         {/*<TotalFromCSV csvFile="/data/processed.csv" />*/}
         <TotalFromCSV csvFile="/data/processed.csv" />

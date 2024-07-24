@@ -24,11 +24,13 @@ const onChange = (value) => {
 };
 
     return (
-        <Select defaultValue={selectedValue || options[0].value} style={{ width: 150 ,fontFamily: "Trebuchet MS"}} onChange={onChange}>
+        <div className='select-container'>
+        <Select defaultValue={selectedValue || options[0].value} style={{ display: flex }} onChange={onChange}>
             {options.map(option => (
-                <Select.Option style={{fontFamily: "Trebuchet MS"}} key={option.value} value={option.value}>{option.label}</Select.Option>
+                <Select.Option key={option.value} value={option.value}>{option.label}</Select.Option>
             ))}
         </Select>
+        <div>
     );
 }
 

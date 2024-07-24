@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Papa from 'papaparse';
 import ReactECharts from 'echarts-for-react';
 import { store } from '../../store';  // 确保这里的路径正确，指向您的 Context 存储设置
+import '../../index.css'
 
 const gradientColor1 = ['#FF8C00', '#FFD700'];
 const gradientColor2 = ['#1E90FF', '#87CEEB'];
@@ -145,7 +146,7 @@ function AssistView({ csvFile }) {
     };
 
     return (
-        <div style={{marginTop: 45}}>
+        <div className='assistchart-container'>
             <ReactECharts option={options} style={{ height: 600, width: '100%' }} />
         </div>
     );
