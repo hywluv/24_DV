@@ -13,7 +13,7 @@ function Overview() {
 
     return <div>
         <div className='title-container'>
-            <p className='title'>Overview</p>
+            <span className='title'>Overview</span><span className='subtitle'>by Model and Sampling Features</span>
         </div>
         {/*<ReactEcharts option={getOption()} />*/}
         {/*<TotalFromCSV csvFile="/data/processed.csv" />*/}
