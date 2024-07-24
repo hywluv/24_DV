@@ -258,42 +258,36 @@ const TotalFromCSV = ({csvFile}) => {
         };
     }
 
+    const toggleSortOrder = () => {
+        // 在点击时更新排序状态
+        setSortOrder(current => {
+            switch (current) {
+                case 'none':
+                    return 'ascending';
+                case 'ascending':
+                    return 'descending';
+                case 'descending':
+                    return 'none';
+                default:
+                    return 'none';
+            }
+        });
+    };
     return (
         <div>
             <ReactECharts option={options} onEvents={onEvents} style={{height: 400}}/>
             <br></br>
             <button style={{
-                width: '100px',
-                height: '27px',
+                width: '200px',
+                height: '30px',
                 fontSize: '15px',
                 cursor: 'pointer',
                 backgroundColor: '#ffffff',
                 border: 'outset',
                 fontFamily: "SimHei",
-                marginRight: 8,
                 marginLeft: 50
-            }} onClick={() => setSortOrder('ascending')}>升序排序
-            </button>
-            <button style={{
-                width: '100px',
-                height: '27px',
-                fontSize: '15px',
-                cursor: 'pointer',
-                backgroundColor: '#ffffff',
-                border: 'outset',
-                fontFamily: "SimHei",
-                marginRight: 8
-            }} onClick={() => setSortOrder('descending')}>降序排序
-            </button>
-            <button style={{
-                width: '120px',
-                height: '27px',
-                fontSize: '15px',
-                cursor: 'pointer',
-                backgroundColor: '#ffffff',
-                border: 'outset',
-                fontFamily: "SimHei"
-            }} onClick={() => setSortOrder('none')}>恢复原始顺序
+            }} onClick={toggleSortOrder}>
+                排序: {sortOrder === 'none' ? '默认' : sortOrder === 'ascending' ? '升序' : '降序'}
             </button>
             {/*<div>[TEST]当前选中的标签: {selectedLabel}</div>*/}
         </div>
