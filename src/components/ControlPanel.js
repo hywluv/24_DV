@@ -16,13 +16,14 @@ function ControlPanel() {
 
    return (
     <div className="control-panel">
-        <p>Control Panel</p>
-        <div>
+        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#ffffff', fontFamily: 'Times New Roman', textAlign: 'center'}}>Control Panel</p>
+        <div style={{marginLeft: 20}}>
             <OverviewSelection/>
         </div>
         <div>
-            <p>Filter Group 1</p>
-            <div>
+            <br/>
+            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#fefefe', textAlign: 'center'}}>Filter Group 1</p>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Model Name:
                 <ConditionSelector
                     selectorKey="ModelName"
@@ -34,7 +35,8 @@ function ControlPanel() {
                     filterGroup="filters1"
                 />
             </div>
-            <div>
+            <br/>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Sampling Target:
                 <ConditionSelector
                     selectorKey="SamplingTarget"
@@ -46,7 +48,8 @@ function ControlPanel() {
                     filterGroup="filters1"
                 />
             </div>
-            <div>
+            <br/>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Sampling Method:
                 <ConditionSelector
                     selectorKey="SamplingMethod"
@@ -60,7 +63,8 @@ function ControlPanel() {
                     filterGroup="filters1"
                 />
             </div>
-            <div>
+            <br/>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Downsampling Level:
                 <ConditionSelector
                     selectorKey="DownsamplingLevel"
@@ -74,9 +78,10 @@ function ControlPanel() {
                     filterGroup="filters1"
                 />
             </div>
+            <br/>
 
-            <p>Filter Group 2</p>
-            <div>
+            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#fefefe', textAlign:'center'}}>Filter Group 2</p>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Model Name:
                 <ConditionSelector
                     selectorKey="ModelName"
@@ -88,7 +93,8 @@ function ControlPanel() {
                     filterGroup="filters2"
                 />
             </div>
-            <div>
+            <br/>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Sampling Target:
                 <ConditionSelector
                     selectorKey="SamplingTarget"
@@ -100,7 +106,8 @@ function ControlPanel() {
                     filterGroup="filters2"
                 />
             </div>
-            <div>
+            <br/>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Sampling Method:
                 <ConditionSelector
                     selectorKey="SamplingMethod"
@@ -114,7 +121,8 @@ function ControlPanel() {
                     filterGroup="filters2"
                 />
             </div>
-            <div>
+            <br/>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20}}>
                 Downsampling Level:
                 <ConditionSelector
                     selectorKey="DownsamplingLevel"

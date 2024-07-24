@@ -21,13 +21,13 @@ const OverviewSelector = () => {
             value={state.OverviewSelection}
             onChange={onChange}
             defaultValue={"Average MeanDiff"}  // Set default value
-            style={{ width: 200 }}  // Optionally specify width
+            style={{ width: 200 ,fontFamily: "Trebuchet MS"}}  // Optionally specify width
         >
-            <Select.Option value="mean">Mean</Select.Option>
-            <Select.Option value="variance">Variance</Select.Option>
-            <Select.Option value="max">Max</Select.Option>
-            <Select.Option value="min">Min</Select.Option>
-            <Select.Option value="default">Default</Select.Option>
+            <Select.Option style={{fontFamily: "Trebuchet MS"}} value="mean">Mean</Select.Option>
+            <Select.Option style={{fontFamily: "Trebuchet MS"}} value="variance">Variance</Select.Option>
+            <Select.Option style={{fontFamily: "Trebuchet MS"}} value="max">Max</Select.Option>
+            <Select.Option style={{fontFamily: "Trebuchet MS"}} value="min">Min</Select.Option>
+            <Select.Option style={{fontFamily: "Trebuchet MS"}} value="default">Default</Select.Option>
         </Select>
     );
 };
