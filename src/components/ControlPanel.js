@@ -16,13 +16,13 @@ function ControlPanel() {
 
    return (
     <div className="control-panel">
-        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#ffffff', fontFamily: 'Times New Roman', textAlign: 'center', marginBottom: 50}}>Control Panel</p>
+        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#ffffff', fontFamily: 'Times New Roman', textAlign: 'center', marginBottom: 50,marginTop: 50}}>Control Panel</p>
         <div style={{marginLeft: 20, marginBottom: 50}}>
             <OverviewSelection/>
         </div>
         <div>
-            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#0f0f0f', textAlign: 'center'}}>Filter Group 1</p>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#0f0f0f', textAlign: 'center', marginRight: 18}}>Filter Group 1</p>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Model Name:
                 <ConditionSelector
                     selectorKey="ModelName"
@@ -35,7 +35,7 @@ function ControlPanel() {
                 />
             </div>
             <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Sampling Target:
                 <ConditionSelector
                     selectorKey="SamplingTarget"
@@ -48,7 +48,7 @@ function ControlPanel() {
                 />
             </div>
             <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Sampling Method:
                 <ConditionSelector
                     selectorKey="SamplingMethod"
@@ -63,7 +63,7 @@ function ControlPanel() {
                 />
             </div>
             <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Downsampling Level:
                 <ConditionSelector
                     selectorKey="DownsamplingLevel"
@@ -79,8 +79,8 @@ function ControlPanel() {
             </div>
             <br/>
 
-            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#0f0f0f', textAlign:'center'}}>Filter Group 2</p>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <p style={{fontFamily: 'Georgia', fontSize: 20, color: '#0f0f0f', textAlign:'center', marginRight: 18}}>Filter Group 2</p>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Model Name:
                 <ConditionSelector
                     selectorKey="ModelName"
@@ -93,7 +93,7 @@ function ControlPanel() {
                 />
             </div>
             <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Sampling Target:
                 <ConditionSelector
                     selectorKey="SamplingTarget"
@@ -106,7 +106,7 @@ function ControlPanel() {
                 />
             </div>
             <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Sampling Method:
                 <ConditionSelector
                     selectorKey="SamplingMethod"
@@ -121,7 +121,7 @@ function ControlPanel() {
                 />
             </div>
             <br/>
-            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 20, color: '#ffffff'}}>
+            <div style={{width: 200, fontFamily: 'Trebuchet MS', textAlign: 'left', marginLeft: 35, color: '#ffffff'}}>
                 Downsampling Level:
                 <ConditionSelector
                     selectorKey="DownsamplingLevel"

@@ -33,6 +33,55 @@ const createRadarIndicator = (data) => {
     }));
 };
 
+const getMaxPoints = (data, indicators) => {
+    const maxPoints = {};
+
+    // 找到每个 type 的最大值
+    data.forEach(group => {
+        group.data.forEach(item => {
+            if (!maxPoints[item.type] || item.value > maxPoints[item.type].value) {
+                maxPoints[item.type] = { value: item.value, runIndex: group.runIndex };
+            }
+        });
+    });
+
+    // 调试日志
+    console.log('Max Points:', maxPoints);
+    console.log('Indicators:', indicators);
+
+    return Object.entries(maxPoints).map(([type, point]) => {
+        // 确保 indicators 是有效的数组
+        if (!Array.isArray(indicators)) {
+            console.error('Indicators should be an array:', indicators);
+            return null;
+        }
+
+        // 找到对应的 indicator
+        const indicatorIndex = indicators.findIndex(indicator => indicator.name === `Type ${type}`);
+
+        if (indicatorIndex === -1) {
+            console.warn('Indicator not found for type:', type);
+            return null;
+        }
+
+        return {
+            coord: [indicatorIndex, point.value],
+            value: point.value,
+            symbol: 'pin',
+            symbolSize: 50,
+            label: {
+                show: true,
+                formatter: `{c}`,
+                color: '#000',
+                fontSize: 12
+            },
+            itemStyle: {
+                color: 'red'
+            }
+        };
+    }).filter(point => point !== null); // 过滤掉无效项
+};
+
 const prepareRadarData = (groups) => {
     return groups.map(group => ({
         name: `RunIndex ${group.runIndex}`,
@@ -59,6 +108,8 @@ const DetailViewChart = ({csvFile}) => {
                         const data = prepareChartData(filteredData, metric);
                         const indicators = createRadarIndicator(data);
                         const radarData = prepareRadarData(data);
+                        const maxPoints = getMaxPoints(data);
+
                         return {
                             title: {
                                 text: `${metric} Data Radar Chart`,
@@ -72,7 +123,7 @@ const DetailViewChart = ({csvFile}) => {
                             },
                             tooltip: {},
                             legend: {
-                                data: radarData,
+                                data: radarData.map(item => item.name),
                                 top: "bottom"
                             },
                             radar: {
@@ -93,7 +144,16 @@ const DetailViewChart = ({csvFile}) => {
                             series: [{
                                 name: metric,
                                 type: 'radar',
-                                data: radarData
+                                data: radarData,
+                                /*label: {
+                                    show: true,
+                                    formatter: (params) => `${params.value.toFixed(2)}`, // 控制显示的位数
+                                    color: '#000',
+                                    fontSize: 12
+                                },*/
+                                markPoint:{
+                                    data: maxPoints
+                                },
                             }]
                         };
                     });

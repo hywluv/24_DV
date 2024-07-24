@@ -11,7 +11,7 @@ function Overview() {
     const {state, dispatch} = useContext(store);
 
     return <div>
-        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#666666', fontFamily: 'Times New Roman', textAlign: 'left', marginLeft:8}}>Overview</p>
+        <p style={{fontSize: '25px', fontWeight: 'bold', color: '#666666', fontFamily: 'Times New Roman', textAlign: 'left', marginLeft:20}}>Overview</p>
         {/*<ReactEcharts option={getOption()} />*/}
         {/*<TotalFromCSV csvFile="/data/processed.csv" />*/}
         <TotalFromCSV csvFile="/data/processed.csv" />

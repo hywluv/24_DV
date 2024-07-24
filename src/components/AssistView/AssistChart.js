@@ -3,6 +3,13 @@ import Papa from 'papaparse';
 import ReactECharts from 'echarts-for-react';
 import { store } from '../../store';  // 确保这里的路径正确，指向您的 Context 存储设置
 
+const gradientColor1 = ['#FF8C00', '#FFD700'];
+const gradientColor2 = ['#1E90FF', '#87CEEB'];
+
+function formatNumber(value) {
+    return value.toFixed(4); // Adjust the number of decimal places here
+}
+
 function AssistView({ csvFile }) {
     const { state } = useContext(store);
     const [chartData, setChartData] = useState([]);
@@ -55,28 +62,91 @@ function AssistView({ csvFile }) {
         },
         xAxis: {
             type: 'category',
-            data: chartData.map(item => item.category)
+            data: chartData.map(item => item.category),
+            axisLabel: {
+                margin:10,
+                show: true,
+                interval: 0,
+                rotate: 0,
+                fontFamily: 'Menlo',
+                fontSize: 12,
+                color:'#000',
+              }
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            nameTextStyle:{fontSize: 14, color: '#333', fontFamily: 'Menlo'}, 
+            axisLabel:{fontFamily: 'Comic Sans MS', fontSize: 12, color:'#000'}
         },
         series: [
             {
                 name: 'Model 1',
                 type: 'bar',
-                data: chartData.map(item => item.model1)
+                data: chartData.map(item => item.model1),
+                backgroundStyle: {
+                    color: 'rgba(220, 220, 220, 0.3)'
+                },
+                itemStyle:{
+                    borderRadius: [10,10,0,0],
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
+                    shadowBlur: 5,
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 1,
+                        y2: 1,
+                        colorStops: [
+                            { offset: 0, color: gradientColor1[0] },
+                            { offset: 1, color: gradientColor1[1] }
+                        ]
+                    },
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    formatter:(params) => formatNumber(params.value), // 显示数值
+                    fontSize: 12,
+                    color: '#000'
+                },
             },
             {
                 name: 'Model 2',
                 type: 'bar',
-                data: chartData.map(item => item.model2)
+                data: chartData.map(item => item.model2),
+                backgroundStyle: {
+                    color: 'rgba(220, 220, 220, 0.3)'
+                },
+                itemStyle:{
+                    borderRadius: [10,10,0,0],
+                    shadowColor: 'rgba(0, 0, 0, 0.3)',
+                    shadowBlur: 5,
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 1,
+                        y2: 1,
+                        colorStops: [
+                            { offset: 0, color: gradientColor2[0] },
+                            { offset: 1, color: gradientColor2[1] }
+                        ]
+                    },
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    formatter:(params) => formatNumber(params.value), // 显示数值
+                    fontSize: 12,
+                    color: '#000'
+                },  
             }
         ]
     };
 
     return (
-        <div>
-            <ReactECharts option={options} style={{ height: 400, width: '100%' }} />
+        <div style={{marginTop: 45}}>
+            <ReactECharts option={options} style={{ height: 600, width: '100%' }} />
         </div>
     );
 }

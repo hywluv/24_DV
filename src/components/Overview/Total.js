@@ -196,6 +196,12 @@ const TotalFromCSV = ({ csvFile }) => {
             ],
 
             tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+            
+            legend: {
+                data: seriesConfig.map(series => series.name),
+                top: 10,
+                right: 300
+            },
 
             xAxis: {
                 type: 'category',
