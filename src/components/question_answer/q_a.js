@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import '../../index.css'
 
 function QuestionAnswer() {
     const [question, setQuestion] = useState('');
@@ -27,8 +28,10 @@ function QuestionAnswer() {
 
     return (
         <div>
-            <p style={{color: '#0f0f0f'}}>Ask a Question</p>
-            <form style={{marginTop: -10}} onSubmit={handleSubmit}>
+            <div className='title-container'>
+                <p className='title'>Ask a Question</p>
+            </div>
+            <form style={{marginTop: -10, marginLeft: '35px'}} onSubmit={handleSubmit}>
                 <textarea
                     value={question}
                     onChange={handleQuestionChange}
@@ -38,33 +41,25 @@ function QuestionAnswer() {
                         fontSize: '14px',
                         color: '#333',
                         backgroundColor: '#f9f9f9',
-                        border: '1px solid #ccc',
+                        borderWidth: 0,
+                        width: '300px',
                         padding: '5px',
                         borderRadius: '5px',
                         lineHeight: '1',
                         resize: 'both'}}
                     placeholder="Enter your question here..."
                 />
-                <button type="submit" disabled={loading}
-                style={{
-                    width: '80px',
-                    height: '30px',
-                    fontSize: '15px',
-                    cursor: 'pointer',
-                    backgroundColor: '#ffffff',
-                    border: 'outset',
-                    fontFamily: "Comic Sans MS",
-                    marginLeft: 10,
-                }}>
+                <button type="submit" disabled={loading} className='button' style={{ marginTop: '10px', marginLeft: '100px' }}>
                     {loading ? 'Loading...' : 'Ask'}
                 </button>
             </form>
-            <p style={{color: '#0f0f0f', marginTop: 15}}>Answer:</p>
-            <div style={{fontFamily: 'Comic Sans MS', fontSize: 15, color: '#666', marginTop: -10}}> 
-                {/* 使用 ReactMarkdown 渲染 Markdown 内容 */}
-                <ReactMarkdown children={answer} remarkPlugins={[remarkGfm]} />
-            </div>
-        </div>
+            <div className='title-container'>
+                <p className='title'>Answer</p>
+                <div style={{fontFamily: 'Comic Sans MS', fontSize: 15, color: '#666', marginTop: -10}}> 
+                    {/* 使用 ReactMarkdown 渲染 Markdown 内容 */}
+                    <ReactMarkdown children={answer} remarkPlugins={[remarkGfm]} />
+                </div>
+            </div></div>
     );
 }
 
