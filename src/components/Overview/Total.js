@@ -3,6 +3,7 @@ import ReactECharts from 'echarts-for-react';
 import Papa from 'papaparse';
 import {store} from '../../store';
 import {useLabel} from './ChartContext'; // 导入自定义的useLabel hook
+import '../../index.css';
 
 
 const colorMapping = {
@@ -203,7 +204,7 @@ const TotalFromCSV = ({csvFile}) => {
 
         return {
             title: {
-                text: '按模型和采样特征概览',
+                text: '',
                 left: 'center',
                 textStyle: {
                     fontSize: 26,
@@ -277,17 +278,8 @@ const TotalFromCSV = ({csvFile}) => {
         <div>
             <ReactECharts option={options} onEvents={onEvents} style={{height: 400}}/>
             <br></br>
-            <button style={{
-                width: '200px',
-                height: '30px',
-                fontSize: '15px',
-                cursor: 'pointer',
-                backgroundColor: '#ffffff',
-                border: 'outset',
-                fontFamily: "SimHei",
-                marginLeft: 50
-            }} onClick={toggleSortOrder}>
-                排序: {sortOrder === 'none' ? '默认' : sortOrder === 'ascending' ? '升序' : '降序'}
+            <button className='button' style={{ marginLeft: '100vh' }} onClick={toggleSortOrder}>
+                Order: {sortOrder === 'none' ? 'Default' : sortOrder === 'ascending' ? 'Ascending' : 'Descending'}
             </button>
             {/*<div>[TEST]当前选中的标签: {selectedLabel}</div>*/}
         </div>
