@@ -5,11 +5,11 @@
 }
 
 .controlPanel{
+  display: flex;
   width: 17%;
-  height: 180vh;  
+  min-height: 200vh;
   background: radial-gradient(circle,#ecbaba,#8bcef8); 
   padding: 20px;
-  margin-bottom: 10px;
   border: 5px solid;
   border-image: linear-gradient(to right, #ff7f50, #87cefa) 1;
 }
