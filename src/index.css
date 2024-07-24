@@ -44,3 +44,24 @@ code {
 .assitchart-container {
   margin-left: 20px;
 }
+
+.subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #3b24a0;
+  margin-left: 10px;
+}
+
+.button {
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #ecbaba;
+  border-width: 0;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-weight: bold;
+}
