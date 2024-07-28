@@ -1,42 +1,106 @@
-本项目仅限用于2024年浙江大学暑期学校课程项目模板。
+# Repo for ZJU 2024 Summer semester Data Visualization Class
 
-## 如何启动本项目
+## Introduction
 
-1. 使用git命令，将本项目同步到本地：
+This is the repository for the Project2 of course Data Visualization in ZJU 2024 Summer semester. 
+Our topic is about establishing the data analysis and visualization in the field of Computer Vision algorithms.
 
-   `git clone https://github.com/susicaliu/ZJU_SummerSchool_ProjectTemplate.git`
-   
-2. 在项目文件夹内，使用git命令，修改remote到你们小组的仓库：
+## Team Members and Contribution info
 
-   将原来的远程仓库重命名：`git remote rename origin template-origin`
-   
-   添加你的远程仓库地址：`git remote add origin your_remote_url`
-   
-   添加文件修改：`git add .`
-   
-   提交文件修改：`git commit -m "Initial Commit"`
-   
-   上传：`git push -u origin master`
-   
-3. 在项目文件夹内，使用npm运行项目：
+- **Yuwei Hu** [@Starrism](https://github.com/hywluv)
+  - Class: Mix 2206
+  - Team Leader
+  - Data Preprocessing
+  - Analysis System Function Design
+- **Zhe Yin** [@InGeYZ](https://github.com/InGeYZ)
+  - Class: Mix 2306
+  - html and css design
+  - UI design
+- **Daiyang Wu** [@Daiyang Wu](https://github.com/74666666666)
+  - Class: Turing 2201
+  - Data Analysis
+  - css and UI design
 
-   安装所有依赖库：`npm install`
-   
-   运行项目：`npm start`
-   
-   如果能正常运行，你应该可以看到浏览器中出现四个区域: Control Panel, Overview, Assist View, Detail View。Control Panel中有按钮和下拉框，Overview中有柱状图，Detail View中有地图。单击"add"或"minus"按钮，数字会同时发生变化。
-   
-   
-## 本项目目前已安装的库
+You can view contribution details of our work in the commit graph. You can contact us via email [@hyw](hyw-luv@zju.edu.cn) if you have any questions.
 
-1. AntD
+## File Structure
 
-   UI组件库
-   
-1. echarts-for-react
+```
+.
+├── README.md
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── public
+│   ├── data
+│   │   ├── meta // meta data of the dataset
+│   │   │    └── *.csv
+│   │   ├── data_modified.py // data preprocessing script
+│   │   ├── avg.csv // preprocessed data
+│   │   └── processed.csv // preprocessed data
+│   └── template_files.* // given by template repo
+└── src
+    ├── index.js
+    ├── index.css
+    ├── logo.svg
+    ├── serviceWorker.js
+    ├── setupTests.js
+    ├── backend
+    │   └── openai_backend.py (backend Insight script)
+    ├── css
+    │   └── *.css
+    ├── test
+    │   └── App.test.js
+    ├── store
+    │   ├── api.js
+    │   ├── data.js
+    │   ├── index.js
+    │   └── reducer.js
+    └── components
+        ├── App.js
+        ├── AssistView.js
+        ├── DetailView.js
+        ├── ControlPanel.js
+        ├── Overview.js
+        ├── AssistView
+        │   ├── AssistChart.js
+        │   └── ConditionSelector.js
+        ├── Overview
+        │   ├── ChartContext.js // Context for Overview Chart and Detail Chart
+        │   ├── OverviewSelector.js
+        │   ├── Total.js // Overview Chart
+        │   └── DetailChart.js
+        └── question_answer
+            └── qa.js
+```
 
-   可视化库
+## How to run
 
-1. papaparse
+1. Clone the repository
 
-   解析.csv文件
+```bash
+git clone git@github.com:hywluv/24_DV.git
+```
+
+2. Install dependencies
+
+```bash
+npm install
+pip install flask flask_cors pandas requests openai
+```
+
+3. modify your openai api key in `src/backend/openai_backend.py`
+
+```bash
+# openai api
+export OPENAI_API_KEY="your api key"
+```
+
+4. Run the project
+
+```bash
+npm start
+python3 src/backend/openai_backend.py # backend running on port 5011
+```
+
+4. Open your browser and visit `http://localhost:3000/`

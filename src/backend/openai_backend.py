@@ -1,4 +1,5 @@
 import json
+import os
 
 from flask import Flask, request, jsonify, make_response
 import requests
@@ -7,7 +8,7 @@ from flask_cors import CORS
 import openai
 import pandas as pd
 
-openai_api_key = 'sk-YdrilWs1mQCEfAcfAa0bC51743Cf4bA9Ab454eB76621006f'
+openai_api_key = os.environ.get('OPENAI_API_KEY')
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
@@ -23,9 +24,9 @@ def ask():
         return resp
 
     data = request.json
-    df = pd.read_csv('D:\\coding\\24_DV\\24_DV\\public\\data\\avg.csv')
+    df = pd.read_csv('../../public/data/avg.csv')
     data_prompts = df.to_string(index=False)
-    print(data_prompts)
+    # print(data_prompts)
     prompt = data['prompt']
     headers = {
         'Authorization': f'Bearer {openai_api_key}',
@@ -46,12 +47,12 @@ def ask():
                 "content": prompt
             }
         ],
-        'max_tokens': 1000,
+        'max_tokens': 300,
         'temperature': 0.5,
     }
 
     response = requests.post(
-        'https://api.xiaoai.plus/v1/chat/completions',
+        'https://api.openai.com/v1/completions',
         headers=headers,
         data=json.dumps(message)
     )
