@@ -25,7 +25,7 @@ You can view contribution details of our work in the commit graph. You can conta
 
 ## File Structure
 
-```
+```text
 .
 ├── README.md
 ├── package.json
@@ -46,7 +46,7 @@ You can view contribution details of our work in the commit graph. You can conta
     ├── serviceWorker.js
     ├── setupTests.js
     ├── backend
-    │   └── openai_backend.py (backend Insight script)
+    │   └── openai_backend.py // backend Insight script
     ├── css
     │   └── *.css
     ├── test
